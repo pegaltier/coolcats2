@@ -1,4 +1,5 @@
 export class Anchor {
-    id: number;
-    test: string;
+    id: string;
+    anchor_type: string;
+    anchor_text: string;
 }

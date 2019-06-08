@@ -8,13 +8,14 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 // project
-import { reducers, metaReducers } from '@core/reducers';
+import { reducers, metaReducers } from '@store/reducers';
+import { AnchorDataService } from './services/data/anchor-data.service';
 
 // conf
 import { environment } from '@env/environment';
 import { dataServiceConfig } from './configs/data-service-config';
 import { entityConfig } from './configs/entity-metadata-config';
-import { AnchorDataService } from './services/anchor-data.service';
+
 
 @NgModule({
   declarations: [],

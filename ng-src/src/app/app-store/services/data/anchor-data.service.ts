@@ -8,6 +8,8 @@ export class AnchorDataService extends HolochainDataService {
         instance: 'test-instance',
         zome: 'coolcats',
         getAll: 'get_anchors',
-        p1: 'testing'
+        add: 'create_anchor',
+        getById: 'get_anchor',
+        delete: ''
     }
 }

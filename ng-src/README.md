@@ -83,6 +83,5 @@ https://github.com/johnpapa/angular-ngrx-data/blob/master/docs/extension-points.
 
 ### Todo
 
-- add a shorcut on angular.json > @app
 - fix the issue with ngrx-data
 - refactor folder services/reducers

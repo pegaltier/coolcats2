@@ -3,15 +3,12 @@ import {
   EntityCollectionServiceBase,
   EntityCollectionServiceElementsFactory
 } from '@ngrx/data';
-import { Post } from '../models';
+import { Handle } from '@core/models';
 
 @Injectable()
-export class PostService extends EntityCollectionServiceBase<Post> {
+export class HandleService extends EntityCollectionServiceBase<Handle> {
   constructor(serviceElementsFactory: EntityCollectionServiceElementsFactory) {
-    super('Post', serviceElementsFactory);
+    super('Handle', serviceElementsFactory);
   }
 
-  getAll() {
-    return super.getAll();
-  }
 }

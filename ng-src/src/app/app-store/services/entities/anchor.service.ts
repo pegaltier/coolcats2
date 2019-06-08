@@ -4,7 +4,7 @@ import {
   EntityCollectionServiceElementsFactory,
   QueryParams
 } from '@ngrx/data';
-import { Anchor } from '../models';
+import { Anchor } from '@core/models';
 
 @Injectable()
 export class AnchorService extends EntityCollectionServiceBase<Anchor> {
@@ -14,13 +14,9 @@ export class AnchorService extends EntityCollectionServiceBase<Anchor> {
     // this.getWithQuery({test: 'abc', xyz: ['de', 'd'], ddd: 'llds'})
   }
 
-  getAll() {
-   console.log('<AnchorService>', 'getAll');
-   return super.getAll();
-  }
-
+  /*
   getWithQuery(params?: QueryParams) {
     return super.getWithQuery(params);
-  }
+  }*/
 
 }

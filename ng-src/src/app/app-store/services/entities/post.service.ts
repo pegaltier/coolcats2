@@ -3,15 +3,12 @@ import {
   EntityCollectionServiceBase,
   EntityCollectionServiceElementsFactory
 } from '@ngrx/data';
-import { Favourite } from '../models';
+import { Post } from '@core/models';
 
 @Injectable()
-export class FavouriteService extends EntityCollectionServiceBase<Favourite> {
+export class PostService extends EntityCollectionServiceBase<Post> {
   constructor(serviceElementsFactory: EntityCollectionServiceElementsFactory) {
-    super('Favourite', serviceElementsFactory);
+    super('Post', serviceElementsFactory);
   }
 
-  getAll() {
-    return super.getAll();
-  }
 }

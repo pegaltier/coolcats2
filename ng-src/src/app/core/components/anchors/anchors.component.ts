@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 // project
 import { Anchor } from '../../models';
-import { AnchorService } from '../../services/anchor.service';
+import { AnchorService } from '../../../app-store/services/entities/anchor.service';
 
 @Component({
   selector: 'app-anchors',
