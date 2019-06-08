@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HolochainService } from './core/services/holochain.service';
+import { EntityDataService } from '@ngrx/data';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ export class AppComponent {
   private zome = 'coolcats';
 
   constructor(private hcService: HolochainService) {
-    this.test1();
+    // this.test1();
   }
 
   private log(msg: string, obj: any): void {

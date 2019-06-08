@@ -2,7 +2,11 @@ import { EntityMetadataMap, EntityDataModuleConfig } from '@ngrx/data';
 
 const entityMetadata: EntityMetadataMap = {
   Hero: {},
-  Anchor: {}
+  Anchor: {},
+  Favourite: {},
+  Handle: {},
+  Post: {},
+  Prop: {}
 };
 
 // because the plural of "hero" is not "heros"

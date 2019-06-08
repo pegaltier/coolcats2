@@ -3,17 +3,15 @@ import {
   EntityCollectionServiceBase,
   EntityCollectionServiceElementsFactory
 } from '@ngrx/data';
-import { Anchor } from '../models';
+import { Post } from '../models';
 
 @Injectable()
-export class AnchorService extends EntityCollectionServiceBase<Anchor> {
+export class PostService extends EntityCollectionServiceBase<Post> {
   constructor(serviceElementsFactory: EntityCollectionServiceElementsFactory) {
-    super('Anchor', serviceElementsFactory);
-
+    super('Post', serviceElementsFactory);
   }
 
   getAll() {
-   console.log('<AnchorService>', 'getAll');
-   return super.getAll();
+    return super.getAll();
   }
 }
