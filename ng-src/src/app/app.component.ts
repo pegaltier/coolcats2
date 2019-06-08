@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { HolochainService } from './core/services/holochain.service';
-import { EntityDataService } from '@ngrx/data';
+import { HolochainService } from '@core/services/holochain.service';
 
 @Component({
   selector: 'app-root',

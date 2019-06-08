@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
+import { QueryParams } from '@ngrx/data';
 import { Observable, from } from 'rxjs';
-import { HolochainService } from 'src/app/core/services/holochain.service';
+
+// project
+import { HolochainService } from '@core/services/holochain.service';
 
 @Injectable()
 export abstract class HolochainDataService {
@@ -32,7 +35,7 @@ export abstract class HolochainDataService {
         return this.hcService.callZome(this.conf.instance, this.conf.zome, this.conf.getAll, { anchor_type: this.conf.p1 });
     }
 
-    getWithQuery(): Observable<any> {
+    getWithQuery(params?: QueryParams): Observable<any> {
         console.log('<HolochainDataService>', 'getWithQuery');
         return from([]);
     }

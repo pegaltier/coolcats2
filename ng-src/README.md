@@ -80,3 +80,9 @@ https://next.ngrx.io/guide/data/entity-dataservice#the-defaultdataservice
 https://github.com/johnpapa/angular-ngrx-data/blob/master/docs/entity-dataservice.md
 https://github.com/johnpapa/angular-ngrx-data/blob/master/lib/src/dataservices/entity-data.service.ts
 https://github.com/johnpapa/angular-ngrx-data/blob/master/docs/extension-points.md
+
+### Todo
+
+- add a shorcut on angular.json > @app
+- fix the issue with ngrx-data
+- refactor folder services/reducers
