@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 // ngrx
-import { EntityDataModule, DefaultDataServiceConfig, EntityDataModuleWithoutEffects } from '@ngrx/data';
+import { EntityDataModule, DefaultDataServiceConfig, EntityDataService } from '@ngrx/data';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -12,19 +12,28 @@ import { reducers, metaReducers } from '../core/reducers';
 
 // conf
 import { environment } from './../../environments/environment';
-import { dataServiceConfig } from './data-service-config';
-import { entityConfig } from './entity-metadata';
+import { dataServiceConfig } from './configs/data-service-config';
+import { entityConfig } from './configs/entity-metadata-config';
+import { AnchorDataService } from './services/anchor-data.service';
 
 @NgModule({
   declarations: [],
   imports: [
     HttpClientModule,
     EffectsModule.forRoot([]),
-    EntityDataModule.forRoot(entityConfig), // with http calls
-    // EntityDataModuleWithoutEffects.forRoot(entityConfig), // without http calls
+    EntityDataModule.forRoot(entityConfig),
     StoreModule.forRoot(reducers, { metaReducers }),
     environment.production ? [] : StoreDevtoolsModule.instrument(),
   ],
-  providers: [{ provide: DefaultDataServiceConfig, useValue: dataServiceConfig }]
+  providers: [
+    AnchorDataService,
+    { provide: DefaultDataServiceConfig, useValue: dataServiceConfig }
+  ]
 })
-export class AppStoreModule { }
+export class AppStoreModule {
+
+  constructor(entityDataService: EntityDataService, anchorDataService: AnchorDataService) {
+    entityDataService.registerService('Anchor', anchorDataService);
+  }
+
+}

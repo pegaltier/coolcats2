@@ -7,13 +7,14 @@ import { Anchor } from '../models';
 
 @Injectable()
 export class AnchorService extends EntityCollectionServiceBase<Anchor> {
+
   constructor(serviceElementsFactory: EntityCollectionServiceElementsFactory) {
     super('Anchor', serviceElementsFactory);
-
   }
 
   getAll() {
    console.log('<AnchorService>', 'getAll');
    return super.getAll();
   }
+
 }

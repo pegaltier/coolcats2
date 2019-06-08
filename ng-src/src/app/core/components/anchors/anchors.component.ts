@@ -25,7 +25,7 @@ export class AnchorsComponent implements OnInit {
   }
   
   getAll() {
-    this.anchorService.getAll();
+    this.anchorService.getAll().subscribe(res => console.log('<AnchorsComponent>', res))
   }
 
   add(anchor: Anchor) {

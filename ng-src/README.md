@@ -75,15 +75,8 @@ rust will rebuild everything
 
 ### Ngrx/data helper
 
-todo override / create custom Entity data services
-
+override / create custom entity data service that querying holochain dna
+https://next.ngrx.io/guide/data/entity-dataservice#the-defaultdataservice
 https://github.com/johnpapa/angular-ngrx-data/blob/master/docs/entity-dataservice.md
 https://github.com/johnpapa/angular-ngrx-data/blob/master/lib/src/dataservices/entity-data.service.ts
-
-/**
- * Module without effects or dataservices which means no HTTP calls
- * This module helpful for internal testing.
- * Also helpful for apps that handle server access on their own and
- * therefore opt-out of @ngrx/effects for entities
- */
-export declare class EntityDataModuleWithoutEffects
+https://github.com/johnpapa/angular-ngrx-data/blob/master/docs/extension-points.md
