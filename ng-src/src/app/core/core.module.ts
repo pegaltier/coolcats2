@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';  
 import { CommonModule } from '@angular/common';
 
 // project component
@@ -15,7 +16,8 @@ import { PropService } from '../app-store/services/entities/prop.service';
 @NgModule({
   declarations: [AnchorsComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [AnchorsComponent],
   providers: [

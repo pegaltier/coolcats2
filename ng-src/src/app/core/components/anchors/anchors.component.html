@@ -1,8 +1,16 @@
-<p>
-  anchors works!
-</p>
+<div>
+  <input type="text" [(ngModel)]="anchor.anchor.anchor_type">
+  <input type="text"  [(ngModel)]="anchor.anchor.anchor_text">
+</div>
+<div>
+  <button (click)="getAll()">getAll</button>
+  <button (click)="add(anchor)">add</button>
+  <button (click)="delete(anchor)">delete</button>
+  <button (click)="update(anchor)">update</button>
 
-<button (click)="getAll()">getAll</button>
-<button (click)="add({id:1})">add</button>
-<button (click)="delete({id:1})">delete</button>
-<button (click)="update({id:1})">update</button>
+</div>
+<div *ngFor="let an of anchors$ | async">
+
+  <span>{{ an.anchor_type }}</span>
+  <span>{{ an.anchor_text }}</span>
+</div>

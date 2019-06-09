@@ -14,7 +14,12 @@ export class AnchorsComponent implements OnInit {
 
   loading$: Observable<boolean>;
   anchors$: Observable<Anchor[]>;
- 
+  anchor = {
+    anchor: {
+      anchor_type: 'testing',
+      anchor_text: '1-2-3'
+    }
+  };
   constructor(private anchorService: AnchorService) {
     this.anchors$ = anchorService.entities$;
     this.loading$ = anchorService.loading$;

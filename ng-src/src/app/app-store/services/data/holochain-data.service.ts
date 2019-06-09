@@ -9,49 +9,54 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export abstract class HolochainDataService {
 
+    // keep structure of DefaultDataService
+    
     abstract conf: HolochainZomeFunction;
     name = 'HolochainDataService';
 
-    constructor(private hcService: HolochainService) {}
-
-    add(): Observable<any> {
-        console.log('<HolochainDataService>', 'add');
-        return this.callZome(this.conf.add, { anchor_type: 'test' });
+    constructor(private hcService: HolochainService) { }
+    
+    add(entity: any): Observable<any> {
+        console.log('<HolochainDataService>', 'add', entity);
+        return this.callZome(this.conf.add, entity)
+            .pipe(map((result: string) => {
+                return { id: JSON.parse(result).value, ...entity.anchor };
+            }));
     }
 
-    delete(): Observable<any> {
+    delete(key: number | string): Observable<any> {
         console.log('<HolochainDataService>', 'delete');
-        return this.callZome(this.conf.delete, { anchor_type: 'test' });
+        return this.callZome(this.conf.delete, { address: key });
     }
 
     getAll(): Observable<any[]> {
         console.log('<HolochainDataService>', 'getAll');
-        return this.callZome(this.conf.getAll, { anchor_type: 'test' });
+        return this.callZome(this.conf.getAll, { anchor_type: 'testing' })
+            .pipe(map((result: string) => JSON.parse(result).value));
     }
 
-    getById(): Observable<any> {
+    getById(key: number | string): Observable<any> {
         console.log('<HolochainDataService>', 'getById');
-        return this.callZome(this.conf.getById, { anchor_type: 'test' });
+        return this.callZome(this.conf.getById, { address: key });
     }
 
-    getWithQuery(params?: QueryParams): Observable<any> {
+    getWithQuery(queryParams: QueryParams | string): Observable<any> {
         console.log('<HolochainDataService>', 'getWithQuery');
-        return this.callZome(this.conf.getWithQuery, { anchor_type: 'test' });
+        return this.callZome(this.conf.getWithQuery, queryParams);
     }
 
-    update(): Observable<any> {
+    update(entity: any): Observable<any> {
         console.log('<HolochainDataService>', 'update');
-        return this.callZome(this.conf.update, { anchor_type: 'test' });
+        return this.callZome(this.conf.update, entity);
     }
 
-    upsert(): Observable<any> {
+    upsert(entity: any): Observable<any> {
         console.log('<HolochainDataService>', 'upsert');
-        return this.callZome(this.conf.upsert, { anchor_type: 'test' });
+        return this.callZome(this.conf.upsert, entity);
     }
 
     private callZome(funcName: string, params: any): Observable<any> {
-        return this.hcService.callZome(this.conf.instance, this.conf.zome, funcName, params)
-            .pipe(map((result: string) => JSON.parse(result).value));
+        return this.hcService.callZome(this.conf.instance, this.conf.zome, funcName, params);
     }
 
 }
