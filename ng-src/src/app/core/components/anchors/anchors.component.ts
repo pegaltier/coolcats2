@@ -25,12 +25,10 @@ export class AnchorsComponent implements OnInit {
     this.loading$ = anchorService.loading$;
   }
  
-  ngOnInit() {
-    // this.getAnchors();
-  }
+  ngOnInit() { }
   
   getAll() {
-    this.anchorService.getAll().subscribe(res => console.log('<AnchorsComponent>', res))
+    this.anchorService.getAll();
   }
 
   add(anchor: Anchor) {

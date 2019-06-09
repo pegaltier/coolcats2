@@ -7,15 +7,24 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-// project
+// project ngrx
 import { reducers, metaReducers } from '@store/reducers';
+
+// project data service
 import { AnchorDataService } from './services/data/anchor-data.service';
+import { PropDataService } from './services/data/prop-data.service';
+
+// project service
+import { AnchorService } from './services/entities/anchor.service';
+import { FavouriteService } from './services/entities/favourite.service';
+import { HandleService } from './services/entities/handle.service';
+import { PostService } from './services/entities/post.service';
+import { PropService } from './services/entities/prop.service';
 
 // conf
 import { environment } from '@env/environment';
 import { dataServiceConfig } from './configs/data-service-config';
 import { entityConfig } from './configs/entity-metadata-config';
-
 
 @NgModule({
   declarations: [],
@@ -27,14 +36,30 @@ import { entityConfig } from './configs/entity-metadata-config';
     environment.production ? [] : StoreDevtoolsModule.instrument(),
   ],
   providers: [
+    // project data service  
     AnchorDataService,
+    PropDataService,
+
+    // project service  
+    AnchorService,
+    FavouriteService,
+    HandleService,
+    PostService,
+    PropService,
+
+    // config
     { provide: DefaultDataServiceConfig, useValue: dataServiceConfig }
   ]
 })
 export class AppStoreModule {
 
-  constructor(entityDataService: EntityDataService, anchorDataService: AnchorDataService) {
+  constructor(
+    entityDataService: EntityDataService,
+    anchorDataService: AnchorDataService,
+    propDataService: PropDataService,
+  ) {
     entityDataService.registerService('Anchor', anchorDataService);
+    entityDataService.registerService('Prop', propDataService);
   }
 
 }

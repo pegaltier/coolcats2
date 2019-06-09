@@ -6,12 +6,7 @@ import { CommonModule } from '@angular/common';
 import { AnchorsComponent } from './components/anchors/anchors.component';
 
 // project service
-import { AnchorService } from '../app-store/services/entities/anchor.service';
 import { HolochainService } from './services/holochain.service';
-import { FavouriteService } from '../app-store/services/entities/favourite.service';
-import { HandleService } from '../app-store/services/entities/handle.service';
-import { PostService } from '../app-store/services/entities/post.service';
-import { PropService } from '../app-store/services/entities/prop.service';
 
 @NgModule({
   declarations: [AnchorsComponent],
@@ -21,11 +16,6 @@ import { PropService } from '../app-store/services/entities/prop.service';
   ],
   exports: [AnchorsComponent],
   providers: [
-    AnchorService,
-    FavouriteService,
-    HandleService,
-    PostService,
-    PropService,
     HolochainService
   ]
 })
