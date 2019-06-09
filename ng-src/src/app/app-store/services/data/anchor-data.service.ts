@@ -28,14 +28,11 @@ export class AnchorDataService extends HolochainDataService {
     add(entity: any): Observable<any> {
         return super.add(entity)
             .pipe(map((result: string) => {
-                const test = {...entity.anchor, id: JSON.parse(result).value };
-                console.log('<AnchorDataService>', 'add2', test);
-                return test;
+                return {...entity.anchor, id: JSON.parse(result).value };
             }));
     }
 
     getAll(): Observable<any[]> {
-        console.log('<AnchorDataService>', 'getAll');
         return super.getAll()
             .pipe(map((result: any) => JSON.parse(result).value));
     }
@@ -43,5 +40,10 @@ export class AnchorDataService extends HolochainDataService {
     getAllWithParam(param: any):Observable<any[]> {
         this.conf.param = param;
         return this.getAll();
+    }
+
+    getById(key: number | string): Observable<any> {
+        return super.getById(key)
+            .pipe(map((result: any) => JSON.parse(result).value));
     }
 }

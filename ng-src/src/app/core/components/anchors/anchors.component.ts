@@ -37,6 +37,7 @@ export class AnchorsComponent implements OnInit {
   }
 
   getById(anchor: Anchor) {
+    console.log('getById', anchor.id);
     this.anchorService.getByKey(anchor.id);
   }
 
