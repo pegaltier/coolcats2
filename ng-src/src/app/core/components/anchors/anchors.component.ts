@@ -17,7 +17,8 @@ export class AnchorsComponent implements OnInit {
   anchor = {
     anchor: {
       anchor_type: 'testing',
-      anchor_text: '1-2-3'
+      anchor_text: '1-2-3',
+      id: '0'
     }
   };
   constructor(private anchorService: AnchorService) {
@@ -34,13 +35,9 @@ export class AnchorsComponent implements OnInit {
   add(anchor: Anchor) {
     this.anchorService.add(anchor);
   }
- 
-  delete(anchor: Anchor) {
-    this.anchorService.delete(anchor.id);
-  }
 
-  update(anchor: Anchor) {
-    this.anchorService.update(anchor);
+  getById(anchor: Anchor) {
+    this.anchorService.getByKey(anchor.id);
   }
 
 }

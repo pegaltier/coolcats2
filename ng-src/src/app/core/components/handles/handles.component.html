@@ -1,0 +1,17 @@
+<h2>Handle test</h2>
+
+<div>
+  <input type="text" [(ngModel)]="handle.handle">
+</div>
+<div>
+  <button (click)="getAll()">getAll</button>
+  <button (click)="add(handle)">add</button>
+  <button (click)="delete(handle)">delete</button>
+  <button (click)="update(handle)">update</button>
+
+</div>
+<div *ngFor="let an of handles$ | async">
+
+  <span>{{ an.anchor_type }}</span>
+  <span>{{ an.anchor_text }}</span>
+</div>

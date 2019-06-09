@@ -5,43 +5,35 @@ import { map } from 'rxjs/operators';
 import { HolochainDataService } from './holochain-data.service';
 
 @Injectable()
-export class AnchorDataService extends HolochainDataService {
+export class HandleDataService extends HolochainDataService {
 
-    name = 'anchor';
+    name = 'handle';
     conf = {
         instance: 'test-instance',
         zome: 'coolcats',
-        add: 'create_anchor',
+        add: 'use_handle',
         delete: '',
-        getAll: 'get_anchors',
-        getById: 'get_anchor',
+        getAll: 'get_handles',
+        getById: 'get_handle',
         getWithQuery: '',
         update: '',
         upsert: '',
         param: {}
-    };
-
-    // missing:
-    // anchor_exists
-    // get_anchors parameter
+    }
 
     add(entity: any): Observable<any> {
+        console.log('<HandleDataService>', 'add', entity);
         return super.add(entity)
             .pipe(map((result: string) => {
-                const test = {...entity.anchor, id: JSON.parse(result).value };
-                console.log('<AnchorDataService>', 'add2', test);
+                const test = {...entity, id: JSON.parse(result).value };
+                console.log('<HandleDataService>', 'add2', test);
                 return test;
             }));
     }
 
     getAll(): Observable<any[]> {
-        console.log('<AnchorDataService>', 'getAll');
+        console.log('<HandleDataService>', 'getAll');
         return super.getAll()
             .pipe(map((result: any) => JSON.parse(result).value));
-    }
-
-    getAllWithParam(param: any):Observable<any[]> {
-        this.conf.param = param;
-        return this.getAll();
     }
 }

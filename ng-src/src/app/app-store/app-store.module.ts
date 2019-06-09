@@ -12,6 +12,7 @@ import { reducers, metaReducers } from '@store/reducers';
 
 // project data service
 import { AnchorDataService } from './services/data/anchor-data.service';
+import { HandleDataService } from './services/data/handle-data.service';
 import { PropDataService } from './services/data/prop-data.service';
 
 // project service
@@ -38,6 +39,7 @@ import { entityConfig } from './configs/entity-metadata-config';
   providers: [
     // project data service  
     AnchorDataService,
+    HandleDataService,
     PropDataService,
 
     // project service  
@@ -56,10 +58,14 @@ export class AppStoreModule {
   constructor(
     entityDataService: EntityDataService,
     anchorDataService: AnchorDataService,
+    handleDataService: HandleDataService,
     propDataService: PropDataService,
   ) {
-    entityDataService.registerService('Anchor', anchorDataService);
-    entityDataService.registerService('Prop', propDataService);
+    entityDataService.registerServices({
+      'Anchor': anchorDataService,
+      'Prop': propDataService,
+      'Handle': handleDataService
+    });
   }
 
 }

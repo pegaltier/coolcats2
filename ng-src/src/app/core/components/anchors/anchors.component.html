@@ -1,16 +1,21 @@
+<h2>Anchor test</h2>
+
 <div>
   <input type="text" [(ngModel)]="anchor.anchor.anchor_type">
-  <input type="text"  [(ngModel)]="anchor.anchor.anchor_text">
+  <input type="text" [(ngModel)]="anchor.anchor.anchor_text">
+  <button (click)="add(anchor)">add</button>
 </div>
+
+<div>
+  <input type="text" [(ngModel)]="anchor.anchor.id">
+  <button (click)="getById(anchor)">getById</button>
+</div>
+
 <div>
   <button (click)="getAll()">getAll</button>
-  <button (click)="add(anchor)">add</button>
-  <button (click)="delete(anchor)">delete</button>
-  <button (click)="update(anchor)">update</button>
-
 </div>
-<div *ngFor="let an of anchors$ | async">
 
+<div *ngFor="let an of anchors$ | async">
   <span>{{ an.anchor_type }}</span>
   <span>{{ an.anchor_text }}</span>
 </div>

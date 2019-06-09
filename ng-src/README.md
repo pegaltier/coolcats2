@@ -81,6 +81,12 @@ https://github.com/johnpapa/angular-ngrx-data/blob/master/docs/entity-dataservic
 https://github.com/johnpapa/angular-ngrx-data/blob/master/lib/src/dataservices/entity-data.service.ts
 https://github.com/johnpapa/angular-ngrx-data/blob/master/docs/extension-points.md
 
+### Ngrx/data errors
+
+TypeError: entities.reduce is not a function
+1. return object but it should be an array or conversely
+
+
 ### Todo
 
 - fix the issue with ngrx-data

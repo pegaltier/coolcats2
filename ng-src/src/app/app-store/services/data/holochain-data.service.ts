@@ -1,57 +1,51 @@
 import { Injectable } from '@angular/core';
 import { QueryParams } from '@ngrx/data';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
 // project
 import { HolochainService } from '@core/services/holochain.service';
-import { map } from 'rxjs/operators';
 
 @Injectable()
 export abstract class HolochainDataService {
 
-    // keep structure of DefaultDataService
-    
-    abstract conf: HolochainZomeFunction;
-    name = 'HolochainDataService';
+    // keep structure of DefaultDataService as much as possible
+    abstract conf: HcZomeFunctions;
+    abstract name: string;
 
     constructor(private hcService: HolochainService) { }
-    
+
     add(entity: any): Observable<any> {
-        console.log('<HolochainDataService>', 'add', entity);
-        return this.callZome(this.conf.add, entity)
-            .pipe(map((result: string) => {
-                return { id: JSON.parse(result).value, ...entity.anchor };
-            }));
+        console.log('<HolochainDataService>', name,  'add', entity);
+        return this.callZome(this.conf.add, entity);
     }
 
     delete(key: number | string): Observable<any> {
-        console.log('<HolochainDataService>', 'delete');
+        console.log('<HolochainDataService>', name,  'delete', key);
         return this.callZome(this.conf.delete, { address: key });
     }
 
     getAll(): Observable<any[]> {
-        console.log('<HolochainDataService>', 'getAll');
-        return this.callZome(this.conf.getAll, { anchor_type: 'testing' })
-            .pipe(map((result: string) => JSON.parse(result).value));
+        console.log('<HolochainDataService>', name,  'getAll');
+        return this.callZome(this.conf.getAll, this.conf.param );
     }
 
     getById(key: number | string): Observable<any> {
-        console.log('<HolochainDataService>', 'getById');
+        console.log('<HolochainDataService>', name,  'getById', key);
         return this.callZome(this.conf.getById, { address: key });
     }
 
     getWithQuery(queryParams: QueryParams | string): Observable<any> {
-        console.log('<HolochainDataService>', 'getWithQuery');
+        console.log('<HolochainDataService>', name,  'getWithQuery', queryParams);
         return this.callZome(this.conf.getWithQuery, queryParams);
     }
 
     update(entity: any): Observable<any> {
-        console.log('<HolochainDataService>', 'update');
+        console.log('<HolochainDataService>', name,  'update', entity);
         return this.callZome(this.conf.update, entity);
     }
 
     upsert(entity: any): Observable<any> {
-        console.log('<HolochainDataService>', 'upsert');
+        console.log('<HolochainDataService>', name,  'upsert', entity);
         return this.callZome(this.conf.upsert, entity);
     }
 
@@ -61,9 +55,12 @@ export abstract class HolochainDataService {
 
 }
 
-interface HolochainZomeFunction {
+interface HcZomeFunctions {
+    // dna mapping
     instance: string;
     zome: string;
+
+    // functions mapping
     add: string;
     delete: string;
     getAll: string;
@@ -71,4 +68,7 @@ interface HolochainZomeFunction {
     getWithQuery: string;
     update: string;
     upsert: string;
+
+    // optionnal param
+    param: any;
 }
