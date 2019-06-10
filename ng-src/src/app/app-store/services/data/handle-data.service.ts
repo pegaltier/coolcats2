@@ -22,17 +22,14 @@ export class HandleDataService extends HolochainDataService {
     }
 
     add(entity: any): Observable<any> {
-        console.log('<HandleDataService>', 'add', entity);
         return super.add(entity)
             .pipe(map((result: string) => {
                 const test = {...entity, id: JSON.parse(result).value };
-                console.log('<HandleDataService>', 'add2', test);
                 return test;
             }));
     }
 
     getAll(): Observable<any[]> {
-        console.log('<HandleDataService>', 'getAll');
         return super.getAll()
             .pipe(map((result: any) => JSON.parse(result).value));
     }

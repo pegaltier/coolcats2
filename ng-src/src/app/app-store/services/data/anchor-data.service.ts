@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { HolochainDataService } from './holochain-data.service';
+import { QueryParams } from '@ngrx/data';
 
 @Injectable()
 export class AnchorDataService extends HolochainDataService {
@@ -13,33 +14,25 @@ export class AnchorDataService extends HolochainDataService {
         zome: 'coolcats',
         add: 'create_anchor',
         delete: '',
-        getAll: 'get_anchors',
+        getAll: '',
         getById: 'get_anchor',
-        getWithQuery: '',
+        getWithQuery: 'get_anchors',
         update: '',
         upsert: '',
         param: {}
+        // missing: anchor_exists
     };
-
-    // missing:
-    // anchor_exists
-    // get_anchors parameter
 
     add(entity: any): Observable<any> {
         return super.add(entity)
             .pipe(map((result: string) => {
-                return {...entity.anchor, id: JSON.parse(result).value };
+                return { id: JSON.parse(result).value, ...entity.anchor };
             }));
     }
 
-    getAll(): Observable<any[]> {
-        return super.getAll()
+    getWithQuery(queryParams: QueryParams | string): Observable<any> {
+        return super.getWithQuery(queryParams)
             .pipe(map((result: any) => JSON.parse(result).value));
-    }
-
-    getAllWithParam(param: any):Observable<any[]> {
-        this.conf.param = param;
-        return this.getAll();
     }
 
     getById(key: number | string): Observable<any> {

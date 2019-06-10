@@ -22,8 +22,8 @@ export class AppComponent {
   private test1(): void {
     const params1 = {
       anchor: {
-        anchor_type: 'testing',
-        anchor_text: '1-2-3'
+        anchor_type: 'test1.',
+        anchor_text: '1.'
       }
     };
     this.hcService.callZome(this.inst, this.zome, 'create_anchor', params1).subscribe(res1 => {

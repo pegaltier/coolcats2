@@ -1,18 +1,19 @@
 <h2>Anchor test</h2>
 
 <div>
-  <input type="text" [(ngModel)]="anchor.anchor.anchor_type">
-  <input type="text" [(ngModel)]="anchor.anchor.anchor_text">
-  <button (click)="add(anchor)">add</button>
+  <input type="text" [(ngModel)]="anchor1.anchor_type">
+  <input type="text" [(ngModel)]="anchor1.anchor_text">
+  <button (click)="add({anchor: anchor1})">add</button>
 </div>
 
 <div>
-  <input type="text" [(ngModel)]="anchor.anchor.id">
-  <button (click)="getById(anchor.anchor)">getById</button>
+  <input type="text" [(ngModel)]="anchor2.id">
+  <button (click)="getById(anchor2)">getById</button>
 </div>
 
 <div>
-  <button (click)="getAll()">getAll</button>
+  <input type="text" [(ngModel)]="anchor3.anchor_type">
+  <button (click)="getWithQuery(anchor3)">getWithQuery</button>
 </div>
 
 <div *ngFor="let an of anchors$ | async">

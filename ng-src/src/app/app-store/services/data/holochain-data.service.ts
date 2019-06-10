@@ -26,7 +26,7 @@ export abstract class HolochainDataService {
 
     getAll(): Observable<any[]> {
         console.log('<HolochainDataService>', name,  'getAll');
-        return this.callZome(this.conf.getAll, this.conf.param );
+        return this.callZome(this.conf.getAll, {}); // this.conf.param
     }
 
     getById(key: number | string): Observable<any> {
