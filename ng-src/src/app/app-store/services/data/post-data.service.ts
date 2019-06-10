@@ -13,30 +13,37 @@ export class PostDataService extends HolochainDataService {
     conf = {
         instance: 'test-instance',
         zome: 'coolcats',
-        add: '',
+        add: 'post',
         delete: '',
         getAll: '',
-        getById: '',
-        getWithQuery: '',
+        getById: 'get_post',
+        getWithQuery: 'get_posts_by',
         update: '',
         upsert: '',
         param: {}
+        // missing get_posts_with_hashtag
     };
 
     add(entity: any): Observable<any> {
         return super.add(entity)
             .pipe(map((result: string) => {
-                return { id: JSON.parse(result).value, ...entity.anchor };
+                return { id: JSON.parse(result).value, ...entity };
+            }));
+    }
+    
+    getById(key: number | string): Observable<any> {
+        return super.getById(key)
+            .pipe(map((result: any) => {
+                const item = JSON.parse(result).value;
+                return { id: key, ...item.post, author: item.author }
             }));
     }
 
     getWithQuery(queryParams: QueryParams | string): Observable<any> {
         return super.getWithQuery(queryParams)
-            .pipe(map((result: any) => JSON.parse(result).value));
-    }
-
-    getById(key: number | string): Observable<any> {
-        return super.getById(key)
-            .pipe(map((result: any) => JSON.parse(result).value));
+        .pipe(map((result: any) => {
+            const item = JSON.parse(result).value;
+            return { id: item.address, ...item.post, author: item.author }
+        }));
     }
 }

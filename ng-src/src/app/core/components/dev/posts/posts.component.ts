@@ -24,10 +24,7 @@ export class PostsComponent implements OnInit {
   }
  
   ngOnInit() { }
-  
-  getAll() {
-    this.postService.getAll();
-  }
+
 
   add(post: Post) {
     this.postService.add(post);
@@ -37,7 +34,9 @@ export class PostsComponent implements OnInit {
     this.postService.getByKey(post.id);
   }
 
-  getWithQuery(post: Post) {
-    this.postService.getWithQuery(post as any);
+  getWithQuery(param: any) {
+    this.postService.getWithQuery({
+      handles: [param.handle]
+    });
   }
 }

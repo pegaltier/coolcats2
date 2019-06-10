@@ -8,6 +8,8 @@ import { HolochainService } from '@core/services/holochain.service';
 })
 export class AppComponent {
 
+  public devMode: boolean = false;
+  
   private inst = 'test-instance';
   private zome = 'coolcats';
 

@@ -1,4 +1,6 @@
 export class Post {
     id: number;
-    test: string;
+    message: string;
+    stamp: string;
+    author: string;
 }

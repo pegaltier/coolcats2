@@ -11,14 +11,17 @@ import { PropsComponent } from './components/dev/props/props.component';
 import { HandlesComponent } from './components/dev/handles/handles.component';
 import { PostsComponent } from './components/dev/posts/posts.component';
 import { FavouritesComponent } from './components/dev/favourites/favourites.component';
+import { HomeComponent } from './components/home/home.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
-  declarations: [AnchorsComponent, PropsComponent, HandlesComponent, PostsComponent, FavouritesComponent],
+  declarations: [AnchorsComponent, PropsComponent, HandlesComponent, PostsComponent, FavouritesComponent, HomeComponent, HeaderComponent, FooterComponent],
   imports: [
     CommonModule,
     FormsModule
   ],
-  exports: [AnchorsComponent, PropsComponent, HandlesComponent, PostsComponent, FavouritesComponent],
+  exports: [AnchorsComponent, PropsComponent, HandlesComponent, PostsComponent, FavouritesComponent, HomeComponent, HeaderComponent, FooterComponent],
   providers: [
     HolochainService
   ]

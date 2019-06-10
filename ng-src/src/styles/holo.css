@@ -1,0 +1,130 @@
+
+
+/* boostrap breadcrumb override */
+ol.breadcrumb {
+    background: transparent;
+}
+
+ol.breadcrumb li + li::before {
+    color: white!important;
+    content: "â†’ "!important;
+}
+
+ol.breadcrumb li a {
+    color: white;
+}
+
+/* boostrap navbar override */
+ul.navbar-nav li a {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 400; 
+    color: #6600ff !important;
+    text-decoration: none;
+}
+
+ul.navbar-nav li a:hover {
+    text-decoration: underline;
+}
+
+.footer-anchor {
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+/* holochain gradients */
+.holochain-blue-green-gradient {
+    background: #6600ff;
+    background: -moz-linear-gradient(top, #6600ff 0%, #00ffce 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, #6600ff), color-stop(100%, #00ffce));
+    background: -webkit-linear-gradient(top, #6600ff 0%, #00ffce 100%);
+    background: -o-linear-gradient(top, #6600ff 0%, #00ffce 100%);
+    background: -ms-linear-gradient(top, #6600ff 0%, #00ffce 100%);
+    background: linear-gradient(to bottom, #6600ff 0%, #00ffce 100%);
+    color: #ffffff;
+    padding: 10px;
+}
+
+.holochain-green-blue-gradient {
+    background: #00ffce;
+    background: -moz-linear-gradient(top, #00ffce 0%, #6600ff 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, #00ffce), color-stop(100%, #6600ff));
+    background: -webkit-linear-gradient(top, #00ffce 0%, #6600ff 100%);
+    background: -o-linear-gradient(top, #00ffce 0%, #6600ff 100%);
+    background: -ms-linear-gradient(top, #00ffce 0%, #6600ff 100%);
+    background: linear-gradient(to bottom, #00ffce 0%, #6600ff 100%);
+    color: #ffffff;
+    padding: 10px;
+}
+
+.text-border {
+    text-shadow: -0.5px 0 white, 0 0.5px white, 0.5px 0 white, 0 -0.5px white;
+}
+
+/* common list */
+ol.list, ul.list, ul.links {
+    padding-inline-start: 0px !important; /* override nav */
+    font-size: 1.4rem;
+    font-weight: 400; 
+    color: #8892a0;
+}
+
+ul.list {
+    list-style-type: none;
+}
+
+/* links list */
+ul.links {
+    width: auto;
+    text-align: center;
+    list-style-type: none;
+    margin-left:100px;
+    margin-right: 100px;
+}
+
+ul.links:after {
+    content: "";
+    width: 100%;
+    display: inline-block;
+}
+
+ul.links li {
+    display: inline-block;
+    padding: 20px;
+}
+  
+
+span.step {
+    background: #6600ff;
+    border-radius: 1.6em;
+    -moz-border-radius: 1.6em;
+    -webkit-border-radius: 1.6em;
+    color: #ffffff;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 3.2em;
+    text-align: center;
+    width: 3.2em; 
+    margin:20px;
+  }
+
+.loading {
+    -webkit-animation: rotation 5s infinite linear;
+    animation: rotation 5s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+            transform: rotate(0deg);
+    }
+    to {
+            transform: rotate(359deg);
+    }
+}
+
+@media (max-width: 800px) {
+    ul.links {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}

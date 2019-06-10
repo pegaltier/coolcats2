@@ -13,8 +13,8 @@ export class FavouriteDataService extends HolochainDataService {
     conf = {
         instance: 'test-instance',
         zome: 'coolcats',
-        add: '',
-        delete: '',
+        add: 'add_favourite',
+        delete: 'remove_favourite',
         getAll: '',
         getById: '',
         getWithQuery: '',
@@ -23,20 +23,20 @@ export class FavouriteDataService extends HolochainDataService {
         param: {}
     };
 
+    // todo finish add and remove
+    
     add(entity: any): Observable<any> {
         return super.add(entity)
             .pipe(map((result: string) => {
-                return { id: JSON.parse(result).value, ...entity.anchor };
+                JSON.parse(result).value.map(address => { return { id: address}});
             }));
     }
 
-    getWithQuery(queryParams: QueryParams | string): Observable<any> {
-        return super.getWithQuery(queryParams)
-            .pipe(map((result: any) => JSON.parse(result).value));
+    delete(key: number | string): Observable<any> {
+        return super.delete(key)
+        .pipe(map((result: string) => {
+            return { id: JSON.parse(result).value };
+        }));
     }
 
-    getById(key: number | string): Observable<any> {
-        return super.getById(key)
-            .pipe(map((result: any) => JSON.parse(result).value));
-    }
 }

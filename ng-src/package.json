@@ -25,6 +25,7 @@
     "@ngrx/entity": "8.0.0",
     "@ngrx/store": "8.0.0",
     "@ngrx/store-devtools": "8.0.0",
+    "bootstrap": "^4.3.1",
     "rxjs": "6.5.2",
     "tslib": "1.9.3",
     "zone.js": "0.9.1"
