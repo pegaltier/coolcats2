@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 // project
-import { Anchor } from '../../models';
-import { AnchorService } from '../../../app-store/services/entities/anchor.service';
+import { Anchor } from '../../../models';
+import { AnchorService } from '../../../../app-store/services/entities/anchor.service';
 import { QueryParams } from '@ngrx/data';
 
 @Component({
@@ -15,10 +15,7 @@ export class AnchorsComponent implements OnInit {
 
   loading$: Observable<boolean>;
   anchors$: Observable<Anchor[]>;
-  anchor1 = {
-      anchor_type: 'testing',
-      anchor_text: '1-2-3',
-  };
+  anchor1 = {};
   anchor2 = {};
   anchor3 = {};
 
@@ -38,12 +35,10 @@ export class AnchorsComponent implements OnInit {
   }
 
   getById(anchor: Anchor) {
-    console.log('getById', anchor.id);
     this.anchorService.getByKey(anchor.id);
   }
 
   getWithQuery(anchor: Anchor) {
-    console.log('getWithQuery', anchor.anchor_type);
     this.anchorService.getWithQuery(anchor as any);
   }
 

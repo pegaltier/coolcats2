@@ -1,0 +1,22 @@
+<h2>Favourite test</h2>
+
+<div>
+  <input type="text" [(ngModel)]="favourite1.anchor_type">
+  <input type="text" [(ngModel)]="favourite1.anchor_text">
+  <button (click)="add({favourite: favourite1})">add</button>
+</div>
+
+<div>
+  <input type="text" [(ngModel)]="favourite2.id">
+  <button (click)="getById(favourite2)">getById</button>
+</div>
+
+<div>
+  <input type="text" [(ngModel)]="favourite3.anchor_type">
+  <button (click)="getWithQuery(favourite3)">getWithQuery</button>
+</div>
+
+<div *ngFor="let f of favourites$ | async">
+  <span>{{ f.anchor_type }}</span>
+  <span>{{ f.anchor_text }}</span>
+</div>

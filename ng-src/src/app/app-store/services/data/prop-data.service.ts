@@ -3,6 +3,8 @@ import { QueryParams } from '@ngrx/data';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+// project
+import { AppStoreModule } from '@store/app-store.module';
 import { HolochainDataService } from './holochain-data.service';
 
 @Injectable()

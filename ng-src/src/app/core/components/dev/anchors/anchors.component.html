@@ -16,7 +16,7 @@
   <button (click)="getWithQuery(anchor3)">getWithQuery</button>
 </div>
 
-<div *ngFor="let an of anchors$ | async">
-  <span>{{ an.anchor_type }}</span>
-  <span>{{ an.anchor_text }}</span>
+<div *ngFor="let a of anchors$ | async">
+  <span>{{ a.anchor_type }}</span>
+  <span>{{ a.anchor_text }}</span>
 </div>

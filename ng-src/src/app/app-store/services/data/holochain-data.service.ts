@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
 import { QueryParams } from '@ngrx/data';
 import { Observable } from 'rxjs';
 
 // project
 import { HolochainService } from '@core/services/holochain.service';
+import { Injectable } from '@angular/core';
 
 @Injectable()
 export abstract class HolochainDataService {

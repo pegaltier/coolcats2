@@ -26,6 +26,8 @@ import { PropService } from './services/entities/prop.service';
 import { environment } from '@env/environment';
 import { dataServiceConfig } from './configs/data-service-config';
 import { entityConfig } from './configs/entity-metadata-config';
+import { PostDataService } from './services/data/post-data.service';
+import { FavouriteDataService } from './services/data/favourite-data.service';
 
 @NgModule({
   declarations: [],
@@ -37,10 +39,12 @@ import { entityConfig } from './configs/entity-metadata-config';
     environment.production ? [] : StoreDevtoolsModule.instrument(),
   ],
   providers: [
-    // project data service  
+    // project data service 
     AnchorDataService,
     HandleDataService,
     PropDataService,
+    PostDataService,
+    FavouriteDataService,
 
     // project service  
     AnchorService,
@@ -60,11 +64,15 @@ export class AppStoreModule {
     anchorDataService: AnchorDataService,
     handleDataService: HandleDataService,
     propDataService: PropDataService,
+    postDataService: PostDataService,
+    favouriteDataService: FavouriteDataService
   ) {
     entityDataService.registerServices({
       'Anchor': anchorDataService,
       'Prop': propDataService,
-      'Handle': handleDataService
+      'Handle': handleDataService,
+      'Post': postDataService,
+      'Favourite': favouriteDataService
     });
   }
 

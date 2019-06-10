@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
-import { HolochainDataService } from './holochain-data.service';
 import { QueryParams } from '@ngrx/data';
+
+// project
+import { HolochainDataService } from './holochain-data.service';
 
 @Injectable()
 export class AnchorDataService extends HolochainDataService {

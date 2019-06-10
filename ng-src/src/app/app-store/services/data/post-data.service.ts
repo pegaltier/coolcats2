@@ -1,37 +1,42 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { QueryParams } from '@ngrx/data';
 
 // project
 import { HolochainDataService } from './holochain-data.service';
 
 @Injectable()
-export class HandleDataService extends HolochainDataService {
+export class PostDataService extends HolochainDataService {
 
-    name = 'handle';
+    name = 'post';
     conf = {
         instance: 'test-instance',
         zome: 'coolcats',
-        add: 'use_handle',
+        add: '',
         delete: '',
-        getAll: 'get_handles',
-        getById: 'get_handle',
+        getAll: '',
+        getById: '',
         getWithQuery: '',
         update: '',
         upsert: '',
         param: {}
-    }
+    };
 
     add(entity: any): Observable<any> {
         return super.add(entity)
             .pipe(map((result: string) => {
-                const test = {...entity, id: JSON.parse(result).value };
-                return test;
+                return { id: JSON.parse(result).value, ...entity.anchor };
             }));
     }
 
-    getAll(): Observable<any[]> {
-        return super.getAll()
+    getWithQuery(queryParams: QueryParams | string): Observable<any> {
+        return super.getWithQuery(queryParams)
+            .pipe(map((result: any) => JSON.parse(result).value));
+    }
+
+    getById(key: number | string): Observable<any> {
+        return super.getById(key)
             .pipe(map((result: any) => JSON.parse(result).value));
     }
 }
