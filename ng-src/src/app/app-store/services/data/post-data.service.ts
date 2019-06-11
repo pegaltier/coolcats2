@@ -17,7 +17,7 @@ export class PostDataService extends HolochainDataService {
         delete: '',
         getAll: '',
         getById: 'get_post',
-        getWithQuery: 'get_posts_by',
+        getWithQuery: ['get_posts_by', 'get_posts_with_hashtag'],
         update: '',
         upsert: '',
         param: {}
@@ -42,8 +42,13 @@ export class PostDataService extends HolochainDataService {
     getWithQuery(queryParams: QueryParams | string): Observable<any> {
         return super.getWithQuery(queryParams)
         .pipe(map((result: any) => {
+            const res = [];
             const item = JSON.parse(result).value;
-            return { id: item.address, ...item.post, author: item.author }
+            item.forEach(e => {
+                res.push({ id: e.address, ...e.post, author: e.author });
+            });
+            console.log('getWithQuery', queryParams, res);
+            return res;
         }));
     }
 }

@@ -25,7 +25,10 @@
         My profile
       </div>
       <div class="col-6">
-        One of three columns
+        <div *ngFor="let p of posts$ | async">
+          <span>{{ p.message }}</span>
+          <span>{{ p.stamp }}</span>
+        </div>
       </div>
       <div class="col-3">
         Suggestion
@@ -33,9 +36,9 @@
     </div>
   </div>
 </section>
-
-<button class="btn btn-lg btn-outline-primary" (click)="open()">Launch demo modal</button>
-
+<!--
+<button class="btn btn-lg btn-outline-primary" (click)="openPostModal()">Launch demo modal</button>
+-->
 <ng-template #modal let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Create a new Post</h4>
@@ -48,7 +51,8 @@
       <div class="form-group">
         <label for="message">Message</label>
         <div class="input-group">
-          <input id="message" class="form-control" type="text">
+          <input id="message" class="form-control" type="text" [(ngModel)]="post.message"
+            [ngModelOptions]="{standalone: true}">
         </div>
       </div>
     </form>

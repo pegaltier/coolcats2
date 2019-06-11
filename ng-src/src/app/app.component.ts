@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HolochainService } from '@core/services/holochain.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,7 @@ import { HolochainService } from '@core/services/holochain.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  private newPostEvent: Subject<void> = new Subject<void>();
 
   private inst = 'test-instance';
   private zome = 'coolcats';
@@ -17,6 +19,7 @@ export class AppComponent {
 
   newPost() {
     console.log('newPost');
+    this.newPostEvent.next();
   }
 
   logout() {

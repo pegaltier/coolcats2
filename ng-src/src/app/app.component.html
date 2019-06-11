@@ -1,5 +1,5 @@
 <app-header (newPostEvent)="newPost()" (logoutEvent)="logout()"></app-header>
-<app-home></app-home>
+<app-home [newPost]="newPostEvent.asObservable()"></app-home>
 <app-dev></app-dev>
 <app-footer></app-footer>
 <router-outlet></router-outlet>

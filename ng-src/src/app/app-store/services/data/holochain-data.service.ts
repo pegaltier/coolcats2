@@ -15,42 +15,57 @@ export abstract class HolochainDataService {
     constructor(private hcService: HolochainService) { }
 
     add(entity: any): Observable<any> {
-        console.log('<HolochainDataService>', name,  'add', entity);
+        console.log('<HolochainDataService>', this.name,  'add', entity);
         return this.callZome(this.conf.add, entity);
     }
 
     delete(key: number | string): Observable<any> {
-        console.log('<HolochainDataService>', name,  'delete', key);
+        console.log('<HolochainDataService>', this.name,  'delete', key);
         return this.callZome(this.conf.delete, { address: key });
     }
 
     getAll(): Observable<any[]> {
-        console.log('<HolochainDataService>', name,  'getAll');
+        console.log('<HolochainDataService>', this.name,  'getAll');
         return this.callZome(this.conf.getAll, {}); // this.conf.param
     }
 
     getById(key: number | string): Observable<any> {
-        console.log('<HolochainDataService>', name,  'getById', key);
+        console.log('<HolochainDataService>', this.name,  'getById', key);
         return this.callZome(this.conf.getById, { address: key });
     }
 
     getWithQuery(queryParams: QueryParams | string): Observable<any> {
-        console.log('<HolochainDataService>', name,  'getWithQuery', queryParams);
-        return this.callZome(this.conf.getWithQuery, queryParams);
+        console.log('<HolochainDataService>', this.name,  'getWithQuery', queryParams);
+        return this.callZome(this.getZome(queryParams), this.getQuery(queryParams));
     }
 
     update(entity: any): Observable<any> {
-        console.log('<HolochainDataService>', name,  'update', entity);
+        console.log('<HolochainDataService>', this.name,  'update', entity);
         return this.callZome(this.conf.update, entity);
     }
 
     upsert(entity: any): Observable<any> {
-        console.log('<HolochainDataService>', name,  'upsert', entity);
+        console.log('<HolochainDataService>', this.name,  'upsert', entity);
         return this.callZome(this.conf.upsert, entity);
     }
 
     private callZome(funcName: string, params: any): Observable<any> {
         return this.hcService.callZome(this.conf.instance, this.conf.zome, funcName, params);
+    }
+
+    private getZome(queryParams: any): string {
+        let zome = this.conf.getWithQuery instanceof String ? 
+        this.conf.getWithQuery as string : 
+        this.conf.getWithQuery[queryParams.index];
+        console.log('getZome', zome);
+        return zome;
+    }
+
+    private getQuery(queryParams: any): QueryParams | string {
+        let newQuery = queryParams;
+        delete newQuery.index;
+        console.log('getQuery', newQuery);
+        return newQuery;
     }
 
 }
@@ -65,7 +80,7 @@ interface HcZomeFunctions {
     delete: string;
     getAll: string;
     getById: string;
-    getWithQuery: string;
+    getWithQuery: string | string[];
     update: string;
     upsert: string;
 

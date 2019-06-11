@@ -1,6 +1,6 @@
 export class Post {
-    id: number;
+    id: string;
     message: string;
     stamp: string;
-    author: string;
+    author?: string;
 }
