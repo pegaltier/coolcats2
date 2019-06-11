@@ -10,8 +10,8 @@
   <button (click)="update(handle)">update</button>
 
 </div>
-<div *ngFor="let an of handles$ | async">
+<div *ngFor="let a of handles$ | async">
 
-  <span>{{ an.anchor_type }}</span>
-  <span>{{ an.anchor_text }}</span>
+  <span>{{ a.anchor_type }}</span>
+  <span>{{ a.anchor_text }}</span>
 </div>

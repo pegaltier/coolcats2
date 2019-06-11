@@ -8,14 +8,21 @@ import { HolochainService } from '@core/services/holochain.service';
 })
 export class AppComponent {
 
-  public devMode: boolean = false;
-  
   private inst = 'test-instance';
   private zome = 'coolcats';
 
   constructor(private hcService: HolochainService) {
     // this.test1();
   }
+
+  newPost() {
+    console.log('newPost');
+  }
+
+  logout() {
+    console.log('logout');
+  }
+
 
   private log(msg: string, obj: any): void {
     console.log('pecoolcats', msg, obj);

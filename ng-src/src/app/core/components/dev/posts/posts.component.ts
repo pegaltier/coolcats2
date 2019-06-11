@@ -13,13 +13,13 @@ import { Post } from '@core/models';
 export class PostsComponent implements OnInit {
 
   loading$: Observable<boolean>;
-  anchors$: Observable<Post[]>;
+  posts$: Observable<Post[]>;
   post1 = {};
   post2 = {};
   post3 = {};
 
   constructor(private postService: PostService) {
-    this.anchors$ = postService.entities$;
+    this.posts$ = postService.entities$;
     this.loading$ = postService.loading$;
   }
  

@@ -1,0 +1,21 @@
+
+<section class="fdb-block">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col">
+  
+          <button class="btn" (click)="devMode = !devMode">Dev mode</button>
+          <div *ngIf="devMode">
+            <app-anchors></app-anchors>
+            <app-props></app-props>
+            <app-handles></app-handles>
+            <app-posts></app-posts>
+            <app-favourites></app-favourites>
+          </div>
+  
+        </div>
+      </div>
+  
+    </div>
+  </section>
+  

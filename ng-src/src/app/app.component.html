@@ -1,15 +1,5 @@
-<app-header></app-header>
+<app-header (newPostEvent)="newPost()" (logoutEvent)="logout()"></app-header>
 <app-home></app-home>
-
-<button class="btn" (click)="devMode = !devMode">Dev mode</button>
-<div *ngIf="devMode">
-  <app-anchors></app-anchors>
-  <app-props></app-props>
-  <app-handles></app-handles>
-  <app-posts></app-posts>
-  <app-favourites></app-favourites>
-</div>
-
+<app-dev></app-dev>
 <app-footer></app-footer>
-
 <router-outlet></router-outlet>
