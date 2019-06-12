@@ -89,5 +89,7 @@ TypeError: entities.reduce is not a function
 
 ### Todo
 
-- fix the issue with ngrx-data
-- refactor folder services/reducers
+- needed dna changes:
+
+1. add 'post' need to return the id/address
+2. 

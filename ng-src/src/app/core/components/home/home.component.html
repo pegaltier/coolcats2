@@ -25,9 +25,20 @@
         My profile
       </div>
       <div class="col-6">
-        <div *ngFor="let p of posts$ | async">
-          <span>{{ p.message }}</span>
-          <span>{{ p.stamp }}</span>
+        <div class="posts" *ngFor="let p of posts$ | async">
+          <div class="row post">
+            <div class="col-2">
+              <img class="rounded-circle" src="https://i.pravatar.cc/50" src-fallback="https://i.pravatar.cc/50">
+            </div>
+            <div class="col-10">
+              <span><b>{{ p.author }}</b></span><br>
+              <span>{{ p.message }}</span>
+            </div>
+          </div>
+
+
+
+
         </div>
       </div>
       <div class="col-3">

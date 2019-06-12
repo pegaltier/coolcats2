@@ -14,6 +14,7 @@ export class AppComponent {
   private zome = 'coolcats';
 
   constructor(private hcService: HolochainService) {
+    this.init();
     // this.test1();
   }
 
@@ -30,6 +31,16 @@ export class AppComponent {
   private log(msg: string, obj: any): void {
     console.log('pecoolcats', msg, obj);
   }
+
+
+  private init(): void {
+    this.hcService.callZome(this.inst, this.zome, 'use_handle', {
+      handle: "buffaloBill"
+    }).subscribe(res1 => {
+      this.log('use_handle', res1);
+    });
+  }
+
 
   private test1(): void {
     const params1 = {

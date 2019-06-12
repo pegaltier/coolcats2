@@ -11,7 +11,6 @@ import { HolochainService } from './services/holochain.service';
 
 // project component
 import { AnchorsComponent } from './components/dev/anchors/anchors.component';
-import { PropsComponent } from './components/dev/props/props.component';
 import { HandlesComponent } from './components/dev/handles/handles.component';
 import { PostsComponent } from './components/dev/posts/posts.component';
 import { FavouritesComponent } from './components/dev/favourites/favourites.component';
@@ -20,14 +19,21 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DevComponent } from './components/dev/dev.component';
 
+// project directive
+import { ImgFallbackDirective } from './directives/img.fallback.directive';
+
 @NgModule({
-  declarations: [AnchorsComponent, PropsComponent, HandlesComponent, PostsComponent, FavouritesComponent, HomeComponent, HeaderComponent, FooterComponent, DevComponent],
+  declarations: [
+    AnchorsComponent, HandlesComponent, PostsComponent, FavouritesComponent, HomeComponent, HeaderComponent, FooterComponent, DevComponent,
+    ImgFallbackDirective
+  
+  ],
   imports: [
     CommonModule,
     FormsModule,
     NgbModule
   ],
-  exports: [AnchorsComponent, PropsComponent, HandlesComponent, PostsComponent, FavouritesComponent, HomeComponent, HeaderComponent, FooterComponent, DevComponent],
+  exports: [AnchorsComponent, HandlesComponent, PostsComponent, FavouritesComponent, HomeComponent, HeaderComponent, FooterComponent, DevComponent, ImgFallbackDirective],
   providers: [
     HolochainService
   ]

@@ -57,14 +57,12 @@ export abstract class HolochainDataService {
         let zome = this.conf.getWithQuery instanceof String ? 
         this.conf.getWithQuery as string : 
         this.conf.getWithQuery[queryParams.index];
-        console.log('getZome', zome);
         return zome;
     }
 
     private getQuery(queryParams: any): QueryParams | string {
         let newQuery = queryParams;
         delete newQuery.index;
-        console.log('getQuery', newQuery);
         return newQuery;
     }
 

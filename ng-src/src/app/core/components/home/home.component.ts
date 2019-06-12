@@ -37,6 +37,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.eventsSubscription = this.newPost.subscribe(() => this.openPostModal());
+    this.getPostsFromHandle();
     this.logged = true;
   }
 
@@ -45,9 +46,19 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   postMessage(): void {
-    // @ts-ignore
-    this.postService.add(this.post).subscribe(res => this.postService.getWithQuery({ index: 1, hashtag: "#hh2"}));
+    
+    this.postService.add(this.post).subscribe(res => this.getPostsFromHandle());
     this.modalService.dismissAll();
+  }
+
+  getPostsFromHandle() {
+    // @ts-ignore
+    this.postService.getWithQuery({ index: 0, handles: ["buffaloBill"] });
+  }
+
+  getPostsFromHashtag() {
+    // @ts-ignore
+    this.postService.getWithQuery({ index: 1, hashtag: "#hh2"});
   }
 
   openPostModal() {

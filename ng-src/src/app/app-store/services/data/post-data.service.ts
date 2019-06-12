@@ -47,7 +47,6 @@ export class PostDataService extends HolochainDataService {
             item.forEach(e => {
                 res.push({ id: e.address, ...e.post, author: e.author });
             });
-            console.log('getWithQuery', queryParams, res);
             return res;
         }));
     }

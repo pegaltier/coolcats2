@@ -13,21 +13,19 @@ import { reducers, metaReducers } from '@store/reducers';
 // project data service
 import { AnchorDataService } from './services/data/anchor-data.service';
 import { HandleDataService } from './services/data/handle-data.service';
-import { PropDataService } from './services/data/prop-data.service';
+import { PostDataService } from './services/data/post-data.service';
+import { FavouriteDataService } from './services/data/favourite-data.service';
 
 // project service
 import { AnchorService } from './services/entities/anchor.service';
 import { FavouriteService } from './services/entities/favourite.service';
 import { HandleService } from './services/entities/handle.service';
 import { PostService } from './services/entities/post.service';
-import { PropService } from './services/entities/prop.service';
 
 // conf
 import { environment } from '@env/environment';
 import { dataServiceConfig } from './configs/data-service-config';
 import { entityConfig } from './configs/entity-metadata-config';
-import { PostDataService } from './services/data/post-data.service';
-import { FavouriteDataService } from './services/data/favourite-data.service';
 
 @NgModule({
   declarations: [],
@@ -42,7 +40,6 @@ import { FavouriteDataService } from './services/data/favourite-data.service';
     // project data service 
     AnchorDataService,
     HandleDataService,
-    PropDataService,
     PostDataService,
     FavouriteDataService,
 
@@ -51,7 +48,6 @@ import { FavouriteDataService } from './services/data/favourite-data.service';
     FavouriteService,
     HandleService,
     PostService,
-    PropService,
 
     // config
     { provide: DefaultDataServiceConfig, useValue: dataServiceConfig }
@@ -63,13 +59,11 @@ export class AppStoreModule {
     entityDataService: EntityDataService,
     anchorDataService: AnchorDataService,
     handleDataService: HandleDataService,
-    propDataService: PropDataService,
     postDataService: PostDataService,
     favouriteDataService: FavouriteDataService
   ) {
     entityDataService.registerServices({
       'Anchor': anchorDataService,
-      'Prop': propDataService,
       'Handle': handleDataService,
       'Post': postDataService,
       'Favourite': favouriteDataService
