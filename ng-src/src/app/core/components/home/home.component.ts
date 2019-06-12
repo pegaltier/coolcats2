@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.eventsSubscription = this.newPost$.subscribe(() => this.openPostModal());
     this.handleSubscription = this.handle$.subscribe(res => this.checkHandle(res));
-    // this.login('pegaltier');
+    this.login('pegaltier');
   }
 
   ngOnDestroy() {

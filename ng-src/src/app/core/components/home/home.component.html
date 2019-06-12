@@ -1,29 +1,10 @@
-<section class="fdb-block mt-5" *ngIf="(handle$ | async)?.error != undefined">
-  <div class="container bg-r py-5" style="background-image: url(https://www.buyholo.net/img/holochain-logo-tr.png);">
-
-    <div class="row justify-content-start">
-      <div class="col-12 col-sm-10 col-md-8 text-center text-sm-left">
-
-        <h1 class="text-border">Coolcats: The Decentralized Twitter</h1>
-
-        <p class="lead text-border"><b>Coolcats</b> is built on top of <b>Holochain</b> and <b>Angular</b> in order to
-          show the power
-          of these two frameworks and to give useful example to others developers.</p>
-        <p class="mt-4">
-          <a class="btn btn-lg btn-outline-primary ml-sm-3 mr-3 mr-sm-0 mt-3 mt-sm-0"
-            href="javascript:void(1)">Login</a>
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="fdb-block mt-5" *ngIf="(handle$ | async)?.value != undefined">
+<ng-container *ngIf="(handle$ | async) as logged else login">
+<section class="fdb-block mt-5" *ngIf="logged && logged.value != undefined else login">
   <div class="container">
     <div class="row">
       <div class="col-3">
         My profile:<br>
-        {{ user.handle }}
+        {{ logged.handle }}
       </div>
       <div class="col-6">
         <div class="posts" *ngFor="let p of posts$ | async">
@@ -48,9 +29,30 @@
     </div>
   </div>
 </section>
-<!--
-<button class="btn btn-lg btn-outline-primary" (click)="openPostModal()">Launch demo modal</button>
--->
+</ng-container>
+
+<ng-template #login>
+  <section class="fdb-block mt-5">
+    <div class="container bg-r py-5" style="background-image: url(https://www.buyholo.net/img/holochain-logo-tr.png);">
+
+      <div class="row justify-content-start">
+        <div class="col-12 col-sm-10 col-md-8 text-center text-sm-left">
+
+          <h1 class="text-border">Coolcats: The Decentralized Twitter</h1>
+
+          <p class="lead text-border"><b>Coolcats</b> is built on top of <b>Holochain</b> and <b>Angular</b> in order to
+            show the power
+            of these two frameworks and to give useful example to others developers.</p>
+          <p class="mt-4">
+            <a class="btn btn-lg btn-outline-primary ml-sm-3 mr-3 mr-sm-0 mt-3 mt-sm-0"
+              href="javascript:void(1)">Login</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</ng-template>
+
 <ng-template #modal let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Create a new Post</h4>
