@@ -1,34 +1,34 @@
 <ng-container *ngIf="(handle$ | async) as logged else login">
-<section class="fdb-block mt-5" *ngIf="logged && logged.value != undefined else login">
-  <div class="container">
-    <div class="row">
-      <div class="col-3">
-        My profile:<br>
-        {{ logged.handle }}
-      </div>
-      <div class="col-6">
-        <div class="posts" *ngFor="let p of posts$ | async">
-          <div class="row post">
-            <div class="col-2">
-              <img class="rounded-circle" src="https://i.pravatar.cc/50" src-fallback="https://i.pravatar.cc/50">
-            </div>
-            <div class="col-10">
-              <span><b>{{ p.author }}</b></span><br>
-              <span>{{ p.message }}</span>
+  <section class="fdb-block mt-5" *ngIf="logged && logged.value != undefined else login">
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+          My profile:<br>
+          {{ logged.handle }}
+        </div>
+        <div class="col-6">
+          <div class="posts" *ngFor="let p of posts$ | async">
+            <div class="row post">
+              <div class="col-2">
+                <img class="rounded-circle" src="https://i.pravatar.cc/50" src-fallback="https://i.pravatar.cc/50">
+              </div>
+              <div class="col-10">
+                <span><b>{{ p.author }}</b></span><br>
+                <span>{{ p.message }}</span>
+              </div>
             </div>
           </div>
-        </div>
-        <div *ngIf="(posts$ | async).length === 0">
-          No post
-        </div>
+          <div *ngIf="(posts$ | async).length === 0">
+            No post
+          </div>
 
-      </div>
-      <div class="col-3">
-        Suggestion
+        </div>
+        <div class="col-3">
+          Suggestion
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 </ng-container>
 
 <ng-template #login>
@@ -44,8 +44,8 @@
             show the power
             of these two frameworks and to give useful example to others developers.</p>
           <p class="mt-4">
-            <a class="btn btn-lg btn-outline-primary ml-sm-3 mr-3 mr-sm-0 mt-3 mt-sm-0"
-              href="javascript:void(1)">Login</a>
+            <a class="btn btn-lg btn-outline-primary ml-sm-3 mr-3 mr-sm-0 mt-3 mt-sm-0" href="javascript:void(1)"
+              (click)="openLoginModal()">Login</a>
           </p>
         </div>
       </div>
@@ -53,10 +53,35 @@
   </section>
 </ng-template>
 
-<ng-template #modal let-modal>
+
+<ng-template #modal1 let-modal1>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Choose your nickname</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="message">Nickname</label>
+        <div class="input-group">
+          <input id="message" class="form-control" type="text" [(ngModel)]="user.handle"
+            [ngModelOptions]="{standalone: true}">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="test(user.handle)">Login</button>
+  </div>
+</ng-template>
+
+
+<ng-template #modal2 let-modal2>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Create a new Post</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <button type="button" class="close" aria-label="Close" (click)="modal2.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>

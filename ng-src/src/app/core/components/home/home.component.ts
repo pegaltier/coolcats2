@@ -17,8 +17,8 @@ import { HolochainService } from '@core/services/holochain.service';
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
-  @ViewChild('modal', { static: true })
-  modal: ElementRef;
+  @ViewChild('modal1', { static: true }) modal1: ElementRef;
+  @ViewChild('modal2', { static: true }) modal2: ElementRef;
 
   @Input() newPost$: Observable<void>;
   @Input() handle$: Observable<any>;
@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.eventsSubscription = this.newPost$.subscribe(() => this.openPostModal());
     this.handleSubscription = this.handle$.subscribe(res => this.checkHandle(res));
-    this.login('pegaltier');
+    //this.login('pegaltier');
   }
 
   ngOnDestroy() {
@@ -65,6 +65,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       handle: handle
     }).subscribe(res1 => {
       this.log('use_handle', res1);
+      this.modalService.dismissAll();
     });
   }
 
@@ -83,8 +84,17 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.postService.getWithQuery({ index: 1, hashtag: hashtag });
   }
 
+  openLoginModal() {
+    this.modalService.open(this.modal1, { backdrop: 'static', ariaLabelledBy: 'modal-basic-title' });
+  }
+
   openPostModal() {
-    this.modalService.open(this.modal, { ariaLabelledBy: 'modal-basic-title' });
+    this.modalService.open(this.modal2, { backdrop: 'static', ariaLabelledBy: 'modal-basic-title' });
+  }
+
+  test(a) {
+    this.log('test',  a);
+    this.login(a);
   }
 
   private log(msg: string, obj: any): void {
