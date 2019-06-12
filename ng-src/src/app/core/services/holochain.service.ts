@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { from, Observable } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
+import { mergeMap, map } from 'rxjs/operators';
 
 // lib
 import { connect } from '@holochain/hc-web-client'
@@ -16,6 +16,11 @@ export class HolochainService {
   public callZome(instance: string, zome: string, funcName: string, params: any): Observable<any> {
     return this.conn.pipe(mergeMap((res: HConnect) => from(res.callZome(instance, zome, funcName)(params))));
   }
+
+  public callZomeObj(instance: string, zome: string, funcName: string, params: any): Observable<any> {
+    return this.callZome(instance, zome, funcName, params).pipe(map((obj: string) => JSON.parse(obj)));
+  }
+  
 }
 
 interface HConnect {

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HolochainService } from '@core/services/holochain.service';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +12,9 @@ export class AppComponent {
 
   private inst = 'test-instance';
   private zome = 'coolcats';
+
+  // obs
+  public handle$: Observable<any>;
 
   constructor(private hcService: HolochainService) {
     this.init();
@@ -27,41 +30,15 @@ export class AppComponent {
     console.log('logout');
   }
 
-
   private log(msg: string, obj: any): void {
     console.log('pecoolcats', msg, obj);
   }
 
-
   private init(): void {
-    this.hcService.callZome(this.inst, this.zome, 'use_handle', {
-      handle: "buffaloBill"
-    }).subscribe(res1 => {
-      this.log('use_handle', res1);
+    this.handle$ = this.hcService.callZomeObj(this.inst, this.zome, 'app_property', {
+      key: "Agent_Handle"
     });
-  }
-
-
-  private test1(): void {
-    const params1 = {
-      anchor: {
-        anchor_type: 'test1.',
-        anchor_text: '1.'
-      }
-    };
-    this.hcService.callZome(this.inst, this.zome, 'create_anchor', params1).subscribe(res1 => {
-      this.log('create_anchor', res1);
-      const params2 = { address: JSON.parse(res1).value };
-      this.hcService.callZome(this.inst, this.zome, 'get_anchor', params2).subscribe(res2 => {
-        this.log('get_anchor', res2);
-      });
-      this.hcService.callZome(this.inst, this.zome, 'anchor_exists', params1).subscribe(res2 => {
-        this.log('anchor_exists', res2);
-      });
-      this.hcService.callZome(this.inst, this.zome, 'get_anchors', { anchor_type: params1.anchor.anchor_type }).subscribe(res2 => {
-        this.log('get_anchors', res2);
-      });
-    });
+    this.handle$.subscribe(res => this.log('handle', res));
   }
 
 }

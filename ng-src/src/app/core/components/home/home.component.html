@@ -1,4 +1,4 @@
-<section class="fdb-block mt-5" *ngIf="!logged">
+<section class="fdb-block mt-5" *ngIf="(handle$ | async)?.error != undefined">
   <div class="container bg-r py-5" style="background-image: url(https://www.buyholo.net/img/holochain-logo-tr.png);">
 
     <div class="row justify-content-start">
@@ -18,11 +18,12 @@
   </div>
 </section>
 
-<section class="fdb-block mt-5" *ngIf="logged">
+<section class="fdb-block mt-5" *ngIf="(handle$ | async)?.value != undefined">
   <div class="container">
     <div class="row">
       <div class="col-3">
-        My profile
+        My profile:<br>
+        {{ user.handle }}
       </div>
       <div class="col-6">
         <div class="posts" *ngFor="let p of posts$ | async">
@@ -35,11 +36,11 @@
               <span>{{ p.message }}</span>
             </div>
           </div>
-
-
-
-
         </div>
+        <div *ngIf="(posts$ | async).length === 0">
+          No post
+        </div>
+
       </div>
       <div class="col-3">
         Suggestion
