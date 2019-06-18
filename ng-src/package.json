@@ -19,6 +19,7 @@
     "@angular/platform-browser": "8.0.0",
     "@angular/platform-browser-dynamic": "8.0.0",
     "@angular/router": "8.0.0",
+    "@holo-host/hclient": "^0.3.0",
     "@holochain/hc-web-client": "0.5.0",
     "@ng-bootstrap/ng-bootstrap": "^4.2.1",
     "@ngrx/data": "8.0.0",
