@@ -9,9 +9,12 @@ This is a Clutter clone, as close to exact in functionality as I could make it.
 
 Forked from: https://github.com/pythagorean/coolcats2
 
---- inspired from old Holochain Proto
+## Origin
+inspired from old Holochain Proto
 See https://github.com/holochain/clutter for the original.
 See https://github.com/pythagorean/coolcats for the Python port that was made of this
+
+## Helper
 
 If you have not already installed the command line `hc` tool and the `holochain` conductor, or if you need to update
 these to the version being used by this hApp, please run `make update-cli` and/or `make update-conductor` respectively.
