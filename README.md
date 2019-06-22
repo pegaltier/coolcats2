@@ -3,11 +3,15 @@
 
 This is a Clutter clone, as close to exact in functionality as I could make it.
 
-The front-end is implemented in Rust with the Yew framework, and of course the back-end is Rust as well.
+- dna-src > back-end implemented in Holochain/Rust
+- ui-src > front-end implemented in Rust with the Yew framework
+- ng-src > front-end implemented in Angular8/Ngrx8 (with ngrx/data)
 
+Forked from: https://github.com/pythagorean/coolcats2
+
+--- inspired from old Holochain Proto
 See https://github.com/holochain/clutter for the original.
-
-See https://github.com/pythagorean/coolcats for the Python port that was made of this, both for the old Holochain Proto.
+See https://github.com/pythagorean/coolcats for the Python port that was made of this
 
 If you have not already installed the command line `hc` tool and the `holochain` conductor, or if you need to update
 these to the version being used by this hApp, please run `make update-cli` and/or `make update-conductor` respectively.
